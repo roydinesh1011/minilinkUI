@@ -1,0 +1,37 @@
+<div class="container">
+    <h1>Update URL</h1>
+   
+    <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+          
+    <form [formGroup]="form" (ngSubmit)="submit()">
+    
+        <div class="form-group">
+            <label for="actualLink">Long URL</label>
+            <input 
+                formControlName="actualLink"
+                id="actualLink" 
+                type="text" 
+                [(ngModel)]="post.actualLink"
+                class="form-control">
+            <div *ngIf="f['actualLink'].touched && f['actualLink'].invalid" class="alert alert-danger">
+                <div *ngIf="f['actualLink'].errors && f['actualLink'].errors['required']">Long URL is required.</div>
+            </div>
+        </div>
+           
+        <!-- <div class="form-group">
+            <label for="minilink">Mini Link</label>
+            <textarea 
+                formControlName="minilink"
+                id="minilink" 
+                type="text" 
+                [(ngModel)]="post.miniLink"
+                class="form-control">
+            </textarea>
+            <div *ngIf="f['minilink'].touched && f['minilink'].invalid" class="alert alert-danger">
+                <div *ngIf="f['minilink'].errors && f['minilink'].errors['required']">Minilink Url is required.</div>
+            </div>
+        </div> -->
+         
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+    </form>
+</div>

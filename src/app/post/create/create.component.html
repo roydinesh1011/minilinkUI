@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Create New Mini URL</h1>
+  
+    <a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+        
+    <form [formGroup]="form" (ngSubmit)="submit()">
+  
+        <div class="form-group">
+            <label for="actualLink">Enter your long URL</label>
+            <input 
+                formControlName="actualLink"
+                id="actualLink" 
+                type="url" 
+                class="form-control">                
+            <div *ngIf="f['actualLink'].touched && f['actualLink'].invalid" class="alert alert-danger">
+                <div *ngIf="f['actualLink'].errors && f['actualLink'].errors['required']">Long URL is required.</div>
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger">{{errorMessage}}</div>
+            
+        </div>
+  
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+</div>
